@@ -10,14 +10,14 @@ en:
         picture: picture  #g
         title: title  #g
   common:
-     edit_link: この本を編集
-     back_to_books: 戻る
-     new_book: 新しい本を作成
-     show_this_book: この本を見る
-     new_book: 新しい本を追加
-     update_book: 更新
-     destroy_book: この本を削除
+     edit_link: edit link
+     back_to_books: back to books
+     new_book: new book
+     show_this_book: show this book
+     new_book: new book
+     update_book: update book
+     destroy_book: destroy book
 
      header:
-         editing_book: 編集
-         books: 本のリスト
+         editing_book: editting book
+         books: books
