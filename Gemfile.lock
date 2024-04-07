@@ -69,6 +69,7 @@ GEM
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    base64 (0.2.0)
     better_html (2.0.2)
       actionview (>= 6.0)
       activesupport (>= 6.0)
@@ -97,11 +98,13 @@ GEM
       marcel (~> 1.0.0)
       ssrf_filter (~> 1.0)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.3)
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    domain_name (0.6.20240107)
     erb_lint (0.4.0)
       activesupport
       better_html (>= 2.0.1)
@@ -113,8 +116,13 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    http-cookie (1.0.5)
+      domain_name (~> 0.5)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    i18n_generators (1.2.1)
+      mechanize
+      rails (>= 3.0.0)
     image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
@@ -138,12 +146,31 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    mechanize (2.10.0)
+      addressable (~> 2.8)
+      base64
+      domain_name (~> 0.5, >= 0.5.20190701)
+      http-cookie (~> 1.0, >= 1.0.3)
+      mime-types (~> 3.0)
+      net-http-digest_auth (~> 1.4, >= 1.4.1)
+      net-http-persistent (>= 2.5.2, < 5.0.dev)
+      nkf
+      nokogiri (~> 1.11, >= 1.11.2)
+      rubyntlm (~> 0.6, >= 0.6.3)
+      webrick (~> 1.7)
+      webrobots (~> 0.1.2)
     method_source (1.0.0)
+    mime-types (3.5.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2024.0305)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.4)
     minitest (5.19.0)
     msgpack (1.7.2)
+    net-http-digest_auth (1.4.1)
+    net-http-persistent (4.0.2)
+      connection_pool (~> 2.2)
     net-imap (0.3.7)
       date
       net-protocol
@@ -154,6 +181,7 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
+    nkf (0.2.0)
     nokogiri (1.15.3)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
@@ -227,6 +255,7 @@ GEM
     ruby-progressbar (1.13.0)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
+    rubyntlm (0.6.3)
     rubyzip (2.3.2)
     selenium-webdriver (4.11.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -259,6 +288,8 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webrick (1.8.1)
+    webrobots (0.1.2)
     websocket (1.2.9)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
@@ -276,6 +307,7 @@ DEPENDENCIES
   carrierwave
   debug
   erb_lint
+  i18n_generators (~> 1.1)
   importmap-rails
   jbuilder
   puma

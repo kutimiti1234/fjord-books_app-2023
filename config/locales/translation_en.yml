@@ -1,0 +1,25 @@
+en:
+  activerecord:
+    models:
+      book: book  
+
+    attributes:
+      book:
+        author: author  
+        memo: memo  
+        picture: picture  
+        title: title  
+  common:
+     edit_link: edit link
+     back_to_books: back to books
+     new_book: new book
+     show_this_book: show this book
+     new_book: new book
+     update_book: update book
+     destroy_book: destroy book
+
+  books:
+    index:
+       books: books
+    edit:
+      editing_book: editing_book
