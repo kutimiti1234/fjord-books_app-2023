@@ -1,14 +1,14 @@
 en:
   activerecord:
     models:
-      book: book  #g
+      book: book  
 
     attributes:
       book:
-        author: author  #g
-        memo: memo  #g
-        picture: picture  #g
-        title: title  #g
+        author: author  
+        memo: memo  
+        picture: picture  
+        title: title  
   common:
      edit_link: edit link
      back_to_books: back to books
@@ -18,6 +18,8 @@ en:
      update_book: update book
      destroy_book: destroy book
 
-     header:
-         editing_book: editting book
-         books: books
+  books:
+    index:
+       books: books
+    edit:
+      editing_book: editing_book
