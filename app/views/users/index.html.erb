@@ -7,7 +7,7 @@
     <div class="index-item">
       <%= render user %>
       <p>
-        <%= link_to t('views.common.edit', name: User.model_name.human.downcase), edit_user_registration_path %>
+        <%= link_to t('views.common.edit', name: User.model_name.human.downcase), user %>
       </p>
     </div>
   <% end %>
