@@ -9,3 +9,5 @@ en:
         memo: Memo
         picture: Picture
         title: Title
+  turbo_confirm:
+    sign_out_confirmation: "Are you sure you want to sign out?"
