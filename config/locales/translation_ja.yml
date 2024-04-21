@@ -10,6 +10,10 @@ ja:
         memo: メモ
         picture: 画像
         title: タイトル
+      user:
+        zip_code: 郵便番号
+        address: 住所
+        profile: 自己紹介
   turbo_confirm:
     sign_out_confirmation: "本当にサインアウトしますか?"
   controllers:
