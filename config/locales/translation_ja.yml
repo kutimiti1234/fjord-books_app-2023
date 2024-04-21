@@ -12,3 +12,6 @@ ja:
         title: タイトル
   turbo_confirm:
     sign_out_confirmation: "本当にサインアウトしますか?"
+  controllers:
+    common:
+        alert_update: "この%{name}は編集できません"
