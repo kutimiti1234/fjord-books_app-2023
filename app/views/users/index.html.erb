@@ -19,7 +19,6 @@
   <%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>
 </nav>
 
-
 <nav class="page-nav">
   <%= button_to t('sign_out'),destroy_user_session_path, method: :delete ,data: { turbo_method: :deletei,turbo_confirm: t('turbo_confirm.sign_out_confirmation')} %>
 </nav>
