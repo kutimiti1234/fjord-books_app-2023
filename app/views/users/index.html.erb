@@ -7,7 +7,7 @@
     <div class="index-item">
       <%= render user %>
       <p>
-        <%= link_to t('views.common.edit', name: User.model_name.human.downcase), user %>
+        <%= link_to t('views.common.show', name: User.model_name.human.downcase), user %>
       </p>
     </div>
   <% end %>
