@@ -9,19 +9,6 @@ class UsersController < ApplicationController
 
   def show; end
 
-  def edit
-    return if @user == current_user
-
-    redirect_to user_url(@user), notice: t('controllers.common.alert_update', name: User.model_name.human)
-  end
-
-  # PATCH/PUT /users/1 or /users/1.json
-  def update
-    return if @user == current_user
-
-    redirect_to user_url(@user), notice: t('controllers.common.notice_update', name: User.model_name.human)
-  end
-
   def set_user
     @user = User.find(params[:id])
   end
