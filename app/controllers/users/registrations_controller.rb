@@ -55,6 +55,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  def after_update_path_for(user)
+    user_path(user)
+  end
+
+  # The path used after sign up.
+  def after_sign_up_path_for(_user)
+    books_path
+  end
+
+  def after_sign_in_path_for(_user)
+    books_path
+  end
+
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
