@@ -15,7 +15,11 @@ ja:
         address: 住所
         profile: 自己紹介
   turbo_confirm:
-    sign_out_confirmation: "本当にサインアウトしますか?"
+    sign_out_confirmation: "本当にログアウトしますか?"
   controllers:
     common:
         alert_update: "この%{name}は編集できません"
+  users:
+    sessions:
+        sign_out: "ログアウト"
+  
