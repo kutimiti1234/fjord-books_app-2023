@@ -4,8 +4,8 @@ class ApplicationRecord < ActiveRecord::Base
   primary_abstract_class
 
   ALLOWED_CONTENT_TYPES = '
-    icon/jpg
-    icon/png
-    icon/gif
+    image/jpg
+    image/png
+    image/gif
   '
 end
