@@ -16,3 +16,5 @@ ja:
         address: 住所
         self_introduction: 自己紹介文
         icon: アイコン
+  errors:
+     validate_mime_type: jpg,png,gifのみアップロード可能です
