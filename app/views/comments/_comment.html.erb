@@ -1,4 +1,4 @@
-<div id="<%= dom_id comment  %>">
+<div id="<%= dom_id comment %>">
   <p>
     <strong><%= Comment.human_attribute_name(:title) %>:</strong>
     <%= comment.title %>
@@ -14,7 +14,7 @@
     <%= l(comment.created_at,format: :long) %>
   </p>
   <p>
-    <strong><%= "作成者"%>:</strong>
+    <strong><%= "作成者" %>:</strong>
   <% if User.find(comment.user_id).name.empty? %>
         <%= User.find(comment.user_id).email %>
     <% else %>

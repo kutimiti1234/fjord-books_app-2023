@@ -4,7 +4,7 @@
       <h2><%= t('views.common.validation_error', errors: i18n_error_count(book.errors.count), name: Book.model_name.human.downcase) %>:</h2>
 
       <ul>
-        <% report.errors.each do |error| %>
+        <% @report.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

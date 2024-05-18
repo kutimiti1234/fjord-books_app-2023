@@ -9,7 +9,6 @@
   <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
 </div>
 
-
 <div>
 <div id="books" class="index-items">
   <% @report.comments.each do |comment| %>
@@ -22,7 +21,6 @@
   <% end %>
 </div>
 </div>
-
 
 <div>
 <%= link_to "Create comment",new_report_comment_path(@report) %>
