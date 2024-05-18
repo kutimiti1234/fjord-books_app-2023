@@ -25,5 +25,5 @@
 </div>
 
 <div>
-<%= link_to "Create comment",new_book_comment_path(@book) %>
+<%= link_to t("views.common.new",name: Comment.model_name.human.downcase ),new_book_comment_path(@book) %>
 </div>
