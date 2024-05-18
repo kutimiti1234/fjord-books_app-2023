@@ -16,6 +16,10 @@ class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
     @commentable = @comment.commentable
+
+    return unless @comment.user_id != current_user.id
+
+    redirect_to polymorphic_url(@comment), status: :forbidden
   end
 
   # POST /comments or /comments.json
@@ -34,6 +38,11 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
     @comment = Comment.find(params[:id])
+    if @comment.user_id != current_user.id
+      redirect_to polymorphic_url(@comment), status: :forbidden
+      return
+    end
+
     if @comment.update(comment_params)
       redirect_to comment_url(@comment), notice: 'Comment was successfully updated.'
     else
@@ -45,6 +54,11 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @commentable = @comment.commentable
+    if @comment.user_id != current_user.id
+      redirect_to polymorphic_url(@comment), status: :forbidden
+      return
+    end
+
     @comment.destroy
 
     redirect_to polymorphic_url(@commentable), notice: 'Comment was successfully destroyed.'
