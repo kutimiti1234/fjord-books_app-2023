@@ -5,5 +5,5 @@
 <br>
 
 <div>
-  <%= link_to "Back to comments", polymorphic_url(@comment.commentable) %>
+  <%= link_to t('views.common.back', name: Comment.model_name.human.downcase), polymorphic_url(@comment.commentable) %>
 </div>
