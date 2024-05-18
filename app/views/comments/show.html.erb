@@ -1,0 +1,10 @@
+<div class="show-item">
+<%= render "comments/comment",comment: @comment  %>
+</div>
+
+<div>
+  <%= link_to "Edit this comment", edit_report_comment_path(@comment.commentable,@comment) %> |
+  <%= link_to "Back to comments", polymorphic_url(@comment.commentable) %>
+
+  <%= button_to "Destroy this comment", @comment, method: :delete %>
+</div>

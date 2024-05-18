@@ -8,3 +8,22 @@
 
   <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
 </div>
+
+
+<div>
+<div id="books" class="index-items">
+  <% @report.comments.each do |comment| %>
+    <div class="index-item">
+      <%= render comment %>
+      <p>
+        <%= link_to t('views.common.show', name: Comment.model_name.human.downcase),report_comment_path(@report,comment) %>
+      </p>
+    </div>
+  <% end %>
+</div>
+</div>
+
+
+<div>
+<%= link_to "Create comment",new_report_comment_path(@report) %>
+</div>

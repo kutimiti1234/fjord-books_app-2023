@@ -1,0 +1,14 @@
+<%= form_with(model: [@commentable,@comment]) do |form| %>
+<ul>
+      <li>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+
+        <%= form.label :body %>
+        <%= form.text_field :body %>
+      </li>
+  </ul>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
