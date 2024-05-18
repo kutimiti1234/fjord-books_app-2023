@@ -3,8 +3,12 @@
 </div>
 
 <div>
+<% if current_user.id == @comment.user_id %>
   <%= link_to t('views.common.edit', name: Comment.model_name.human.downcase), edit_report_comment_path(@comment.commentable,@comment) %>
+<% end %>
   <%= link_to t('views.common.back', name: Comment.model_name.human.downcase), polymorphic_url(@comment.commentable) %>
 
+<% if current_user.id == @comment.user_id %>
   <%= button_to t('views.common.destroy', name: Comment.model_name.human.downcase), @comment, method: :delete %>
+<% end %>
 </div>
