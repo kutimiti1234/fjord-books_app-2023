@@ -46,7 +46,7 @@ class ReportsController < ApplicationController
   def destroy
     @report.destroy
 
-    redirect_to reports_url, notice: 'Report was successfully destroyed.'
+    redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
   end
 
   private

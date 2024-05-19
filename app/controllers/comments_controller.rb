@@ -31,7 +31,8 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
-      redirect_to comment_url(@comment), notice: 'Comment was successfully created.'
+      redirect_to comment_url(@comment), notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+
     else
       render :new, status: :unprocessable_entity
     end
@@ -46,7 +47,7 @@ class CommentsController < ApplicationController
     end
 
     if @comment.update(comment_params)
-      redirect_to comment_url(@comment), notice: 'Comment was successfully updated.'
+      redirect_to comment_url(@comment), notice: t('controllers.common.notice_update', name: Comment.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end
@@ -63,7 +64,7 @@ class CommentsController < ApplicationController
 
     @comment.destroy
 
-    redirect_to polymorphic_url(@commentable), notice: 'Comment was successfully destroyed.'
+    redirect_to polymorphic_url(@commentable), notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
