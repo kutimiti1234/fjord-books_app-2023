@@ -27,3 +27,6 @@ ja:
         body: 本文
         created_at: 投稿日時
         created_by: 作成者
+  views:
+    common:
+       not_exist: "%{name}は１件もありません。"

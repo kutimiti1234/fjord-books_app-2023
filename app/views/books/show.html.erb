@@ -13,6 +13,7 @@
 
 <div>
 <div id="books" class="index-items">
+  <%= t("views.common.not_exist",name: Comment.model_name.human.downcase) if !@book.comments.exists? %>
   <% @book.comments.each do |comment| %>
     <div class="index-item">
       <%= render comment %>
