@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     @comment = @commentable.comments.new(comment_params) do |c|
-      c.user_id = current_user.id
+      c.user = current_user
     end
 
     if @comment.save
