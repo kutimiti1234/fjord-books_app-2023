@@ -3,7 +3,7 @@
 class CommentsController < ApplicationController
   before_action :set_commentable, only: %i[new create]
 
-  # GET /comments/1 or /comments/1.json
+  # GET /comments/1
   def show
     @comment = Comment.find(params[:id])
     @commentable = @comment.commentable
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @commentable = @comment.commentable
   end
 
-  # POST /comments or /comments.json
+  # POST /comments
   def create
     @comment = @commentable.comments.new(comment_params) do |c|
       c.user_id = current_user.id
@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /comments/1 or /comments/1.json
+  # PATCH/PUT /comments/1
   def update
     @comment = current_user.comments.find(params[:id])
 
@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  # DELETE /comments/1 or /comments/1.json
+  # DELETE /comments/1
   def destroy
     @comment = current_user.comments.find(params[:id])
     @commentable = @comment.commentable
