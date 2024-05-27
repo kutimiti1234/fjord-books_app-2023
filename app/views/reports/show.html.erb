@@ -22,7 +22,7 @@
   <ul>
   <% @report.mentioning_reports.each do |report| %>
     <li>
-     <%= link_to polymorphic_url(report),polymorphic_url(report) %>
+     <%= link_to report.title,polymorphic_url(report) %>
     </li>
   <% end %>
     </ul>
