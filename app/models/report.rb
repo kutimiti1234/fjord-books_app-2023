@@ -10,6 +10,8 @@ class Report < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
+  before_save :update_report_mentions
+
   def editable?(target_user)
     user == target_user
   end
@@ -24,5 +26,25 @@ class Report < ApplicationRecord
 
   def mentioned_reports_ids
     mentioned_reports.map(&:id)
+  end
+
+  def parse_url_in_content(content)
+    r = %r{http://localhost:3000/reports/(\d+)}
+    content.scan(r).flatten.map(&:to_i)
+  end
+
+  def update_report_mentions
+    current_urls = parse_url_in_content(content)
+    existing_urls = mentioning_report_ids
+
+    (current_urls - existing_urls).each do |mentioning_report_id|
+      mentioning_report = Report.find(mentioning_report_id)
+      mentioning_reports << mentioning_report if mentioning_report
+    end
+
+    (existing_urls - current_urls).each do |mentioning_report_id|
+      mentioning_report = Report.find(mentioning_report_id)
+      mentioning_reports.delete(mentioning_report) if mentioning_report
+    end
   end
 end
