@@ -10,3 +10,21 @@
 
   <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
 </nav>
+
+<div>
+<div id="books" class="index-items">
+  <%= t("views.common.not_exist",name: Comment.model_name.human.downcase) if !@book.comments.exists? %>
+  <% @book.comments.each do |comment| %>
+    <div class="index-item">
+      <%= render comment %>
+      <p>
+        <%= link_to t('views.common.show', name: Comment.model_name.human.downcase),book_comment_path(@book,comment) %>
+      </p>
+    </div>
+  <% end %>
+</div>
+</div>
+
+<div>
+<%= link_to t("views.common.new",name: Comment.model_name.human.downcase ),new_book_comment_path(@book) %>
+</div>

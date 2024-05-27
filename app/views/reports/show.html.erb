@@ -1,0 +1,32 @@
+<div class="show-item">
+<%= render @report %>
+</div>
+
+<div>
+<% if current_user.id == @report.user_id %>
+  <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
+<% end %>
+  <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)), reports_path %>
+
+<% if current_user.id == @report.user_id %>
+  <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
+<% end %>
+</div>
+
+<div>
+<div id="books" class="index-items">
+  <%= t("views.common.not_exist",items: Comment.model_name.human.downcase) if !@report.comments.exists? %>
+  <% @report.comments.each do |comment| %>
+    <div class="index-item">
+      <%= render comment %>
+      <p>
+        <%= link_to t('views.common.show', name: Comment.model_name.human.downcase),report_comment_path(@report,comment) %>
+      </p>
+    </div>
+  <% end %>
+</div>
+</div>
+
+<div>
+<%= link_to t("views.common.new",name: Comment.model_name.human.downcase ),new_report_comment_path(@report) %>
+</div>

@@ -2,6 +2,8 @@ en:
   activerecord:
     models:
       book: Book
+      report: Report
+      comment: Comment
 
     attributes:
       book:
@@ -9,3 +11,21 @@ en:
         memo: Memo
         picture: Picture
         title: Title
+      user:
+        name: Name
+        postal_code: Postal code
+        address: Address
+        self_introduction: self_introduction 
+        avatar: Avatar
+      report:
+        title: Title
+        body: Body
+        created_at: Created at
+      comment:
+        title: Title
+        body: Body
+        created_at: Created at
+        created_by: Poster
+  views:
+    common:
+       not_exist: "There are no {itmes}."

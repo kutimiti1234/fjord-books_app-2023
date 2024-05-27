@@ -1,0 +1,24 @@
+<div id="<%= dom_id comment %>">
+  <p>
+    <strong><%= Comment.human_attribute_name(:title) %>:</strong>
+    <%= comment.title %>
+  </p>
+
+  <p>
+    <strong><%= Comment.human_attribute_name(:body) %>:</strong>
+    <%= comment.body %>
+  </p>
+
+  <p>
+    <strong><%= Comment.human_attribute_name(:created_at) %>:</strong>
+    <%= l(comment.created_at,format: :long) %>
+  </p>
+  <p>
+    <strong><%= Comment.human_attribute_name(:created_by) %>:</strong>
+  <% if User.find(comment.user_id).name.empty? %>
+        <%= User.find(comment.user_id).email %>
+    <% else %>
+    <% end %>
+        <%= User.find(comment.user_id).name %>
+  </p>
+</div>
