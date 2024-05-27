@@ -17,5 +17,13 @@
   <% end %>
 </nav>
 
-
-<%= render 'shared/comments', commentable: @report %>
+<div>
+  <p> <%= t Report.human_attribute_name(:mentioning_reports) %></p>
+  <ul>
+  <% @report.mentioning_reports.each do |report| %>
+    <li>
+     <%= link_to polymorphic_url(report),polymorphic_url(report) %>
+    </li>
+  <% end %>
+    </ul>
+</div>
