@@ -29,4 +29,4 @@ ja:
         created_by: 作成者
   views:
     common:
-       not_exist: "%{name}は１件もありません。"
+       not_exist: "%{items}は１件もありません。"
