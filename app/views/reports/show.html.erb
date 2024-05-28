@@ -6,6 +6,8 @@
 
 <%= render 'shared/comments', commentable: @report %>
 
+
+
 <nav class="page-nav">
   <% if @report.editable?(current_user) %>
     <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
@@ -17,10 +19,10 @@
   <% end %>
 </nav>
 
-<div>
-  <p> <%= t Report.human_attribute_name(:mentioning_reports) %></p>
+<div> 
+  <p> <%= t Report.human_attribute_name(:mentioned_reports) %></p>
   <ul>
-  <% @report.mentioning_reports.each do |report| %>
+  <% @report.mentioned_reports.each do |report| %>
     <li>
      <%= link_to report.title,polymorphic_url(report) %>
     </li>

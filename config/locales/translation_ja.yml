@@ -23,4 +23,5 @@ ja:
         content: 内容
         user: 作成者
         created_on: 作成日
-        mentioning_reports: 参照日報
+        mentioning_reports: 言及先日報
+        mentioned_reports:  言及元日報
