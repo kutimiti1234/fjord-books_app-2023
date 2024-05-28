@@ -21,11 +21,11 @@ class Report < ApplicationRecord
   end
 
   def mentioned_reports
-    ReportMention.where(mentioned_reports: id)
+    ReportMention.where(mentioned_report: id).map { |mention| Report.find(mention.report_id) }
   end
 
   def mentioned_reports_ids
-    mentioned_reports.map(&:id)
+    mentioned_reports.map(&:report_id)
   end
 
   def parse_url_in_content(content)
