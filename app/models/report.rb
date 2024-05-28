@@ -38,12 +38,12 @@ class Report < ApplicationRecord
     existing_urls = mentioning_report_ids
 
     (current_urls - existing_urls).each do |mentioning_report_id|
-      mentioning_report = Report.find(mentioning_report_id)
+      mentioning_report = Report.find_by(id: mentioning_report_id)
       mentioning_reports << mentioning_report if mentioning_report
     end
 
     (existing_urls - current_urls).each do |mentioning_report_id|
-      mentioning_report = Report.find(mentioning_report_id)
+      mentioning_report = Report.find_by(id: mentioning_report_id)
       mentioning_reports.delete(mentioning_report) if mentioning_report
     end
   end
