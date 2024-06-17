@@ -23,7 +23,7 @@ class Report < ApplicationRecord
 
   def parse_url_in_content
     r = %r{http://localhost:3000/reports/(\d+)}
-    content.scan(r).flatten.map(&:to_i)
+    content.scan(r).flatten.map(&:to_i).uniq
   end
 
   def update_report_mentions
