@@ -11,8 +11,6 @@ class Report < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
 
-  before_save :update_report_mentions
-
   def editable?(target_user)
     user == target_user
   end
@@ -26,22 +24,24 @@ class Report < ApplicationRecord
     content.scan(r).flatten.map(&:to_i).uniq
   end
 
-  def update_report_mentions
-    current_ids = parse_url_in_content
-    existing_ids = mentioning_report_ids
+  def update_mentions
+    Report.transaction do
+      current_ids = parse_url_in_content
+      existing_ids = mentioning_report_ids
 
-    reports = Report.all.index_by(&:id)
-    adding_report_ids = current_ids - existing_ids
-    deleting_report_ids = existing_ids - current_ids
+      reports = Report.all.index_by(&:id)
+      adding_report_ids = current_ids - existing_ids
+      deleting_report_ids = existing_ids - current_ids
 
-    adding_reports = adding_report_ids.map do |mentioning_report_id|
-      reports[mentioning_report_id]
-    end.compact
-    mentioning_reports.concat adding_reports
+      adding_reports = adding_report_ids.map do |mentioning_report_id|
+        reports[mentioning_report_id]
+      end.compact
+      mentioning_reports.concat adding_reports
 
-    deleting_reports = deleting_report_ids.map do |mentioning_report_id|
-      reports[mentioning_report_id]
-    end.compact
-    mentioning_reports.delete(deleting_reports)
+      deleting_reports = deleting_report_ids.map do |mentioning_report_id|
+        reports[mentioning_report_id]
+      end.compact
+      mentioning_reports.delete(deleting_reports)
+    end
   end
 end
