@@ -30,14 +30,18 @@ class Report < ApplicationRecord
     current_ids = parse_url_in_content
     existing_ids = mentioning_report_ids
 
-    (current_ids - existing_ids).each do |mentioning_report_id|
-      mentioning_report = Report.find_by(id: mentioning_report_id)
-      mentioning_reports << mentioning_report if mentioning_report
-    end
+    reports = Report.all.index_by(&:id)
+    adding_report_ids = current_ids - existing_ids
+    deleting_report_ids = existing_ids - current_ids
 
-    (existing_ids - current_ids).each do |mentioning_report_id|
-      mentioning_report = Report.find_by(id: mentioning_report_id)
-      mentioning_reports.delete(mentioning_report) if mentioning_report
-    end
+    adding_reports = adding_report_ids.map do |mentioning_report_id|
+      reports[mentioning_report_id]
+    end.compact
+    mentioning_reports.concat adding_reports
+
+    deleting_reports = deleting_report_ids.map do |mentioning_report_id|
+      reports[mentioning_report_id]
+    end.compact
+    mentioning_reports.delete(deleting_reports)
   end
 end
