@@ -24,8 +24,10 @@ class Report < ApplicationRecord
     content.scan(r).flatten.map(&:to_i).uniq
   end
 
-  def update_mentions
+  def save_mentions_with
     Report.transaction do
+      yield
+
       current_ids = parse_url_in_content
       existing_ids = mentioning_report_ids
 
