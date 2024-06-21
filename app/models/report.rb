@@ -26,8 +26,7 @@ class Report < ApplicationRecord
 
   def save_with_mentions
     Report.transaction do
-      yield
-
+      save
       current_ids = parse_url_in_content
       existing_ids = mentioning_report_ids
 
