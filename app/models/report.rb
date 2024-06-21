@@ -44,5 +44,7 @@ class Report < ApplicationRecord
       end.compact
       mentioning_reports.delete(deleting_reports)
     end
+  rescue ActiveRecord::RecordInvalid
+    false
   end
 end
