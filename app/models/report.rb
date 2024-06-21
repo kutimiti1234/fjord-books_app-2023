@@ -24,16 +24,16 @@ class Report < ApplicationRecord
     content.scan(r).flatten.map(&:to_i).uniq
   end
 
-  def save_mentions_with
+  def save_with_mentions
     Report.transaction do
       yield
 
       current_ids = parse_url_in_content
       existing_ids = mentioning_report_ids
 
-      reports = Report.all.index_by(&:id)
       adding_report_ids = current_ids - existing_ids
       deleting_report_ids = existing_ids - current_ids
+      reports = Report.where(id: adding_report_ids + deleting_report_ids).index_by(&:id)
 
       adding_reports = adding_report_ids.map do |mentioning_report_id|
         reports[mentioning_report_id]
