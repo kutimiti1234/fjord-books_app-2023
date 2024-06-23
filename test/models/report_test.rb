@@ -5,8 +5,8 @@ require 'test_helper'
 class ReportTest < ActiveSupport::TestCase
   test 'editable or not editable ' do
     report = Report.new(user_id: 1)
-    assert report.editable?(users(:one))
-    assert_not reports(:one).editable?(users(:two))
+    assert report.editable?(users(:bob))
+    assert_not reports(:one).editable?(users(:alice))
   end
 
   test 'the date of created_at' do
