@@ -45,6 +45,13 @@ class ReportsTest < ApplicationSystemTestCase
     assert_text '日報が更新されました。'
   end
 
+  test 'should add comment Report' do
+    visit report_url(@report)
+    fill_in 'comment_content', with: 'テストコメント'
+    click_button 'コメントする'
+    assert_text 'テストコメント'
+  end
+
   test 'should destroy Report' do
     visit report_url(@report)
     click_on 'この日報を削除', match: :first
