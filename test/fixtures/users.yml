@@ -12,5 +12,5 @@ bob:
 
 alice: 
     id: 2
-    email: "example2@gmail.com"
+    email: "example2@example.com"
     name: ""
