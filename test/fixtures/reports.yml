@@ -1,11 +1,18 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
-  title: MyString
-  content: MyText
-
+  id: 1
+  user_id: 1
+  title: "example"
+  content: "http://localhost:3000/reports/2"
+  created_at: "Mon, 10 Jun 2024 23:46:12.452075000 JST +09:00"
 two:
-  user: two
-  title: MyString
-  content: MyText
+  id: 2 
+  user_id: 1
+  title: "example2"
+  content: ""
+three:
+  id: 3
+  user_id: 1
+  title: ""
+  content: ""
