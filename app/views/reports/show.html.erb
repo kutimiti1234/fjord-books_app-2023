@@ -16,3 +16,14 @@
     <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
   <% end %>
 </nav>
+
+<div>
+  <p> <%= t Report.human_attribute_name(:mentioned_reports) %></p>
+  <ul>
+  <% @report.mentioned_reports.each do |report| %>
+    <li>
+     <%= link_to report.title,polymorphic_url(report) %>
+    </li>
+  <% end %>
+    </ul>
+</div>
