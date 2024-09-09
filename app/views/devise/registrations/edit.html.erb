@@ -33,6 +33,15 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :icon %>
+    <%= f.file_field :icon %>
+  </div>
+
+  <% if f.object.icon.representable? %>
+    <%= image_tag f.object.icon.representation(resize_to_limit: [500, 500]) %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit t('.update') %>
   </div>
