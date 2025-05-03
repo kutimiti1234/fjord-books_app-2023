@@ -29,11 +29,13 @@ RSpec.describe Report, type: :model do
   end
 
   describe '#save_mentions' do
-    it '日報保存後、日報本文にその他の日報のURLがある場合、対象の日報を言及先として関連付ける' do
-      mentioned_report = FactoryBot.create(:report)
-      mentioning_report = FactoryBot.build(:report, content: "http://localhost:3000/reports/#{mentioned_report.id}")
+    context '日報保存時に、日報本文にその他の日報のURLがある場合' do
+      it '対象の日報を言及先として関連付けること' do
+        mentioned_report = FactoryBot.create(:report)
+        mentioning_report = FactoryBot.build(:report, content: "http://localhost:3000/reports/#{mentioned_report.id}")
 
-      expect { mentioning_report.save }.to change { mentioning_report.mentioning_report_ids }.from([]).to([mentioned_report.id])
+        expect { mentioning_report.save }.to change { mentioning_report.mentioning_report_ids }.from([]).to([mentioned_report.id])
+      end
     end
   end
 end
