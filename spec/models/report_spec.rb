@@ -6,7 +6,7 @@ RSpec.describe Report, type: :model do
   describe '#editable?' do
     let!(:report) { FactoryBot.build_stubbed(:report) }
 
-    context '日報を所有しているユーザーを引数に与られた場合' do
+    context '日報を所有しているユーザーを引数に与えられた場合' do
       it 'trueを答えること' do
         expect(report.editable?(report.user)).to be_truthy
       end
@@ -21,7 +21,7 @@ RSpec.describe Report, type: :model do
   end
 
   describe '#created_on' do
-    it '日報の作成時刻を答えること' do
+    it '日報の作成時の年月日を答えること' do
       date = DateTime.new(2023, 6, 23, 12, 34, 56)
       report = FactoryBot.build(:report, created_at: date)
       expect(report.created_on).to eq date.to_date
