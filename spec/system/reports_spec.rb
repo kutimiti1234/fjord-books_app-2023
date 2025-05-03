@@ -8,12 +8,12 @@ RSpec.describe 'Reports', type: :system do
     sign_in @user
   end
 
-  scenario '日報の一覧を表示する' do
+  scenario '日報の一覧を表示できること' do
     visit reports_path
     expect(page).to have_selector 'h1', text: '日報の一覧'
   end
 
-  scenario '日報の新規作成' do
+  scenario '日報を新規作成できること' do
     visit reports_path
     click_link '日報の新規作成'
     fill_in 'タイトル', with: '活動報告1'
@@ -25,7 +25,7 @@ RSpec.describe 'Reports', type: :system do
     expect(page).to have_text 'とても疲れた'
   end
 
-  scenario '日報の新規作成' do
+  scenario '日報を更新できること' do
     report = FactoryBot.create(:report, user: @user)
     visit report_path(report)
     click_on 'この日報を編集'
@@ -38,7 +38,7 @@ RSpec.describe 'Reports', type: :system do
     expect(page).to have_text 'とても疲れた'
   end
 
-  scenario '日報の削除' do
+  scenario '日報の削除できること' do
     report = FactoryBot.create(:report, user: @user)
     visit report_path(report)
     click_on 'この日報を削除'
