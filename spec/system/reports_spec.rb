@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Reports', type: :system do
-  before(:each) do
+  before do
     @user = FactoryBot.create(:user)
     sign_in @user
   end
