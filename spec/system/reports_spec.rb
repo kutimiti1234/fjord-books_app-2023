@@ -1,0 +1,46 @@
+# frozen_string_literal: true
+
+require 'rails_helper'
+
+RSpec.describe 'Reports', type: :system do
+  let(:user) { FactoryBot.create(:user) }
+  let(:report) { FactoryBot.create(:report, user:) }
+
+  before do
+    sign_in user
+  end
+
+  scenario '日報の一覧を表示できること' do
+    visit reports_path
+    expect(page).to have_selector 'h1', text: '日報の一覧'
+  end
+
+  scenario '日報を新規作成できること' do
+    visit reports_path
+    click_link '日報の新規作成'
+    fill_in 'タイトル', with: '活動報告1'
+    fill_in '内容', with: 'とても疲れた'
+    click_button '登録する'
+
+    expect(page).to have_text '日報が作成されました'
+  end
+
+  scenario '日報を更新できること' do
+    visit report_path(report)
+    click_on 'この日報を編集'
+    fill_in 'タイトル', with: '活動報告2'
+    fill_in '内容', with: 'とても楽しかった'
+    click_button '更新する'
+
+    expect(page).to have_text '日報が更新されました'
+    expect(page).to have_text '活動報告2'
+    expect(page).to have_text 'とても楽しかった'
+  end
+
+  scenario '日報の削除できること' do
+    visit report_path(report)
+    click_on 'この日報を削除'
+
+    expect(page).to have_text '日報が削除されました'
+  end
+end
