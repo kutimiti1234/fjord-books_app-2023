@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Report, type: :model do
   describe '#editable?' do
-    let!(:report) { FactoryBot.build_stubbed(:report) }
+    let!(:report) { FactoryBot.build(:report) }
 
     context '日報を所有しているユーザーを引数に与えられた場合' do
       it 'trueを答えること' do
