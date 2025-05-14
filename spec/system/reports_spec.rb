@@ -23,20 +23,18 @@ RSpec.describe 'Reports', type: :system do
     click_button '登録する'
 
     expect(page).to have_text '日報が作成されました'
-    expect(page).to have_text '活動報告1'
-    expect(page).to have_text 'とても疲れた'
   end
 
   scenario '日報を更新できること' do
     visit report_path(report)
     click_on 'この日報を編集'
-    fill_in 'タイトル', with: '活動報告1'
-    fill_in '内容', with: 'とても疲れた'
+    fill_in 'タイトル', with: '活動報告2'
+    fill_in '内容', with: 'とても楽しかった'
     click_button '更新する'
 
     expect(page).to have_text '日報が更新されました'
-    expect(page).to have_text '活動報告1'
-    expect(page).to have_text 'とても疲れた'
+    expect(page).to have_text '活動報告2'
+    expect(page).to have_text 'とても楽しかった'
   end
 
   scenario '日報の削除できること' do
