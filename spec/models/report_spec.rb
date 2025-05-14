@@ -8,14 +8,14 @@ RSpec.describe Report, type: :model do
 
     context '日報を所有しているユーザーを引数に与えられた場合' do
       it 'trueを答えること' do
-        expect(report.editable?(report.user)).to be_truthy
+        expect(report.editable?(report.user)).to be
       end
     end
 
     context '日報を所有していないユーザーを引数に与えられた場合' do
       user_not_onwer = FactoryBot.build(:user)
       it 'falseを答えること' do
-        expect(report.editable?(user_not_onwer)).to be_falsey
+        expect(report.editable?(user_not_onwer)).not_to be
       end
     end
   end
